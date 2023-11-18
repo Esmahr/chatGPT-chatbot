@@ -1,0 +1,41 @@
+<!-- chat-page.component.html -->
+
+<div>
+
+  <form (submit)="onSubmit()">
+    <label>
+      Your Message:
+      <input [(ngModel)]="userMessage" name="userMessage" type="text" required>
+    </label>
+
+    <button type="submit">Send</button>
+  </form>
+
+  <div *ngIf="chatGPTResponse !== undefined">
+    GPT cevabı:
+    <p>{{ chatGPTResponse }}</p>
+  </div>
+</div>
+
+<!--
+  
+<div class="chatbot">
+  <div class="header">Müşteri Destek</div>
+  <div class="message">
+    <div *ngFor="let message of chatHistory">
+      <div [ngClass]="{
+        'user-message': message.role === 'user',
+        'bot-message': message.role === 'bot' || message.role === 'system'
+      }">
+        {{ message.content }}
+      </div>
+    </div>
+  </div>
+  <div class="input">
+    <div class="input-container">
+      <input [(ngModel)]="userInput" placeholder="Mesaj..." />
+      <button (click)="sendMessage()">Ara</button>
+    </div>
+  </div>
+</div> 
+-->

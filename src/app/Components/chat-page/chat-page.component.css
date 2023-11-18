@@ -1,0 +1,48 @@
+.chatbot{
+    border-radius: 1rem;
+    width: 30rem;
+    position: relative;
+    margin: auto;
+    margin-top: 2rem;
+}
+
+.header{
+    background-color:indigo;
+    border-top-right-radius: 1rem;
+    border-top-left-radius: 1rem;
+    padding: .75rem;
+    text-align: center;
+    color: white;
+}
+
+.message{
+    height: 35rem;
+    border-left: 1px solid indigo;
+    border-right: 1px solid indigo;
+    padding: 1rem;
+}
+
+.input{
+    border: 1px solid indigo;
+    border-top: none;
+    border-bottom-right-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    padding: .75rem;
+}
+
+input{
+    border-radius: 3rem;
+    height: 1rem;
+    border: 1px solid black;
+    width: 80%;
+    padding: .5rem;
+    margin-right: 1rem;
+}
+
+button{
+    border-radius: 10rem;
+    background-color: indigo;
+    color: white;
+    border: none;
+    padding: .6rem;
+}
