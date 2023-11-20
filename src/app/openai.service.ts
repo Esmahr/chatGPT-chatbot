@@ -9,8 +9,7 @@ import { Observable, catchError, map, of} from 'rxjs';
 export class OpenaiService {
 
   private apiUrl = 'https://api.openai.com/v1/chat/completions';
-  private apiKey = 'xxxxx'; // OpenAI API anahtarınızı buraya ekleyin
-
+  private apiKey = 'your-api-key';
   constructor(private http: HttpClient) {}
 
   sendMessage(message: string): Observable<any> {
