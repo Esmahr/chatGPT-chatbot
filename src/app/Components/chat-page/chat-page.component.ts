@@ -9,22 +9,28 @@ import { OpenaiService } from 'src/app/openai.service';
   styleUrls: ['./chat-page.component.css']
 })
 export class ChatPageComponent {
+  userMessage = '';
+  chatHistory: { content: string; isUser: boolean }[] = [];
 
-  userMessage: string = '';
-  chatGPTResponse: string | undefined;
+  constructor(private chatbotService: OpenaiService) {}
 
-  constructor(private openaiService: OpenaiService) { }
+  sendMessage() {
+    this.chatHistory.push({ content: this.userMessage, isUser: true });
 
-  onSubmit() {
-    this.openaiService.teachGPT(this.userMessage)
-      .subscribe(
-        response => {
-          this.chatGPTResponse = response;
-          console.log('ChatGPT Cevabı:', response);
-        },
-        error => {
-          console.error('Bir hata oluştu:', error);
-        }
-      );
+    this.chatbotService.sendMessage(this.userMessage).subscribe((response) => {
+      const chatGPTResponse = response.choices[0]?.message?.content || 'Sorry, I didn\'t understand that.';
+      this.chatHistory.push({ content: chatGPTResponse, isUser: false });
+    });
+
+    this.userMessage = '';
   }
+
+  isUserMessage(message: any): boolean {
+    return message.isUser;
+  }
+
+  getMessageContent(message: any): string {
+    return message.content;
+  }
+
 }

@@ -1,41 +1,28 @@
-<!-- chat-page.component.html -->
+<div class="container">
+  <div class="chat-area">
+    <div *ngFor="let message of chatHistory" class="message-container">
 
-<div>
-
-  <form (submit)="onSubmit()">
-    <label>
-      Your Message:
-      <input [(ngModel)]="userMessage" name="userMessage" type="text" required>
-    </label>
-
-    <button type="submit">Send</button>
-  </form>
-
-  <div *ngIf="chatGPTResponse !== undefined">
-    GPT cevabı:
-    <p>{{ chatGPTResponse }}</p>
-  </div>
-</div>
-
-<!--
-  
-<div class="chatbot">
-  <div class="header">Müşteri Destek</div>
-  <div class="message">
-    <div *ngFor="let message of chatHistory">
-      <div [ngClass]="{
-        'user-message': message.role === 'user',
-        'bot-message': message.role === 'bot' || message.role === 'system'
-      }">
-        {{ message.content }}
+      <div *ngIf="isUserMessage(message)" class="message text-end" style="justify-content: end;align-items: end;">
+        <div class="user d-flex" style="justify-content: end;">
+          <h6>User</h6><img style="border-radius: 5rem; width: 20px; height: 20px;margin-left: .2rem;" src="../../../assets/user_863777.png" alt="">
+        </div>
+        <div class="user-message me-4">
+          {{ getMessageContent(message) }}
+        </div>
+      </div>
+      <div *ngIf="!isUserMessage(message)" class="message">
+        <div class="chatgpt d-flex">
+          <img style="border-radius: 5rem; width: 20px; height: 20px;margin-right: .2rem;" src="../../../assets/abstract_10112022.png" alt=""><h6>Chatgpt</h6>
+        </div>
+        <div class="chatgpt-message ms-4">
+          {{ getMessageContent(message) }}
+        </div>
       </div>
     </div>
   </div>
-  <div class="input">
-    <div class="input-container">
-      <input [(ngModel)]="userInput" placeholder="Mesaj..." />
-      <button (click)="sendMessage()">Ara</button>
-    </div>
+  <div class="input-search fixed-bottom" style="bottom: 8rem; left: 15rem;">
+    <input [(ngModel)]="userMessage" placeholder="Mesajını yaz..." (keyup.enter)="sendMessage()" />
+    <button (click)="sendMessage()">Gönder</button>
   </div>
-</div> 
--->
+
+</div>
