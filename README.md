@@ -1,3 +1,3 @@
 # ChatboxApp
 
-<img src="assets/chatbot.png" alt="">
+<img src="src/assets/chatbot.png" alt="">
